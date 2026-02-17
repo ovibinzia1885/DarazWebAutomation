@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { loginPage } = require("../pages/login");
+const fs = require('fs');
 
 
 test("Login with valid credentials", async ({ page }) => {
@@ -13,7 +14,12 @@ test("Login with valid credentials", async ({ page }) => {
     await expect(userProfile).toBeVisible();
     const accountName = await userProfile.textContent();
     console.log("Logged in User Name:", accountName);
-    
+    // Save the account name to a json file
+    const userData = {
+        username: accountName?.trim(),
+        loginTime: new Date().toISOString()
+    };  
+    fs.writeFileSync('accountName.json', JSON.stringify(userData, null, 2));
 
 
     });
