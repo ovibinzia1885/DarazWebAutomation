@@ -6,7 +6,7 @@ class loginPage{
     constructor(page){
         this.page= page;
         this.loginLink= page.locator("text=Login");
-        this.emailInput= page.locator('[type="text"]');
+        this.phone= page.locator('[type="text"]');
         this.passwordInput= page.locator('[type="password"]');
         this.loginButton= page.locator(".iweb-button-mask");
 
@@ -14,9 +14,9 @@ class loginPage{
 }
 
 
-async login(email, password){
+async login(phone, password){
     await this.loginLink.click();
-    await this.emailInput.fill(email);
+    await this.phone.fill(phone);
     await this.passwordInput.fill(password);
     await this.loginButton.click(); 
 
