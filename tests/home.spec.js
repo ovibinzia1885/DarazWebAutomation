@@ -11,7 +11,8 @@ test("Login with valid credentials", async ({ page }) => {
     await page.waitForLoadState('networkidle');
     const userProfile = page.locator("#myAccountTrigger");
     await expect(userProfile).toBeVisible();
-    console.log(userProfile);
+    const accountName = await userProfile.textContent();
+    console.log("Logged in User Name:", accountName);
     
 
 
