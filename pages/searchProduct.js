@@ -6,7 +6,6 @@ const {loginPage} = require('./login');
 class SearchPage extends loginPage {
     constructor(page) {
     super(page); 
-         this .loginPage = new loginPage(page);
         this.searchInput = page.locator('[name="q"]');
         this.productTitle = page.locator('.xYcXp h1');
         
@@ -16,10 +15,11 @@ class SearchPage extends loginPage {
 
     async  loginAndSearch(phone, password, productName) {
 
-    const loginPage = new loginPage(this.page);
-    await loginPage.login(phone, password);
+    const ip = new loginPage(this.page);
+    await ip.login(phone, password);
     await this.searchInput.fill(productName);
     await this.searchInput.press('Enter');
+    await this.page.waitForLoadState("domcontentloaded");
   }
 
 

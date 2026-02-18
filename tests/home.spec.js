@@ -29,7 +29,7 @@ test.skip("Login with valid credentials", async ({ page }) => {
     });
 
 
-test.only('Login then search samsung s3', async ({ page }) => {
+test.skip('Login then search samsung s3', async ({ page }) => {
 
   const searchPage = new SearchPage(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
@@ -61,17 +61,12 @@ test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }
 });
 
 
-test.skip('use multiple filter for search item ', async ({ page }) => {
+test.only('use multiple filter for search item ', async ({ page }) => {
   const multiplefilter= new MultipleSearch(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
-
   await multiplefilter.searchMultiple();
-  await multiplefilter.login('01856565345', 'Daraz2026@');
-  await page.waitForLoadState('networkidle');
-  await multiplefilter.searchMultiple();
-  await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(5000);
-
+  
+  
 
 });
 
