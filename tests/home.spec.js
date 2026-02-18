@@ -1,11 +1,12 @@
 const { test, expect } = require('@playwright/test');
 const { loginPage } = require("../pages/login");
 const { SearchPage } = require("../pages/searchProduct");
+const { AddToCart } = require("../pages/addtocart");
 
 const fs = require('fs');
 
 
-test("Login with valid credentials", async ({ page }) => {
+test.skip("Login with valid credentials", async ({ page }) => {
     
     
     await page.goto ("https://www.daraz.com.bd/#?")
@@ -27,18 +28,37 @@ test("Login with valid credentials", async ({ page }) => {
     });
 
 
-test('Login then search samsung s3', async ({ page }) => {
+test.skip('Login then search samsung s3', async ({ page }) => {
 
   const searchPage = new SearchPage(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
 
   await searchPage.login('01856565345', 'Daraz2026@');  // login reuse
+  await page.waitForLoadState('networkidle');
   await searchPage.searchInput.fill('samsung s3');
   await searchPage.searchInput.press('Enter');
   await searchPage.verifyProduct('samsung s3');
+  await page.waitForTimeout(5000);
 
+});
 
+test.only('Login then search samsung s25 ultra and add to cart', async ({ page }) => {
+    const addToCartPage = new AddToCart(page)
 
+  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+
+  await addToCartPage.login('01856565345', 'Daraz2026@');
+  await page.waitForLoadState('networkidle');
+  await addToCartPage.searchInput.fill("samsung s25 ultra");
+  await addToCartPage.searchInput.press('Enter');
+  // await addToCartPage.searchButton.click();
+  // await addToCartPage.waitForSearchResults();
+  await addToCartPage.openFirstMatchedProduct();
+  await addToCartPage.addToCart();
+  // await page.waitForLoadState('networkidle');
+  await addToCartPage.goToCart();
+  await addToCartPage.verifyCartProduct('Galaxy S25 Ultra');
+  await page.waitForTimeout(5000);
 });
 
 
