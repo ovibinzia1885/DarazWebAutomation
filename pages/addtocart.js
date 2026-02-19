@@ -1,45 +1,45 @@
 
 const { expect } = require("@playwright/test");
-const {loginPage} = require('./login');
+const { loginPage } = require('./login');
 
 
 class AddToCart extends loginPage {
-    constructor(page) {
-    super(page); 
+  constructor(page) {
+    super(page);
     this.page = page;
     this.searchInput = page.locator('[name="q"]');
     // this.searchButton= page.locator(".search-box__search--2fC5");
     this.productItem = page.getByRole('link', { name: 'Galaxy S25 Ultra' });
-    this.AddToCartbutton= page.locator("//span[text()='Add to Cart']");
-    this.popupCloseButton=page.locator(".next-dialog-close");
-    this.cartIcon=page.locator("a[href*='cart']");
-    this.cartProductName= page.locator(".automation-link-from-title-to-prod.title");
+    this.AddToCartbutton = page.locator("//span[text()='Add to Cart']");
+    this.popupCloseButton = page.locator(".next-dialog-close");
+    this.cartIcon = page.locator("a[href*='cart']");
+    this.cartProductName = page.locator(".automation-link-from-title-to-prod.title");
 
-    }
-
-
-   async openFirstMatchedProduct() {
+  }
 
 
-      await this.productItem.nth(0).click();
-  
+  async openFirstMatchedProduct() {
+
+
+    await this.productItem.nth(0).click();
+
   }
 
   async addToCart() {
     await this.AddToCartbutton.click();
 
-  await this.popupCloseButton.waitFor({ state: 'visible', timeout: 3000 }).catch(()=>{});
+    await this.popupCloseButton.waitFor({ state: 'visible', timeout: 3000 }).catch(() => { });
 
-if (await this.popupCloseButton.isVisible().catch(()=>false)) 
-  await this.popupCloseButton.click();
+    if (await this.popupCloseButton.isVisible().catch(() => false))
+      await this.popupCloseButton.click();
 
   }
 
   async goToCart() {
-  
-  await this.cartIcon.waitFor({ state: "attached", timeout: 15000 }); 
-  await this.cartIcon.scrollIntoViewIfNeeded();
-  await this.cartIcon.click({ force: true });
+
+    await this.cartIcon.waitFor({ state: "attached", timeout: 15000 });
+    await this.cartIcon.scrollIntoViewIfNeeded();
+    await this.cartIcon.click({ force: true });
   }
 
   async verifyCartProduct(expectedText) {
@@ -47,9 +47,9 @@ if (await this.popupCloseButton.isVisible().catch(()=>false))
     await expect(this.cartProductName.first()).toContainText(expectedText);
     console.log("Verified product in cart:", expectedText);
   }
-  
 
-  
+
+
 
 }
 

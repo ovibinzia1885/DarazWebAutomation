@@ -3,30 +3,31 @@ const { loginPage } = require("../pages/login");
 const { SearchPage } = require("../pages/searchProduct");
 const { AddToCart } = require("../pages/addtocart");
 const { MultipleSearch } = require("../pages/multipleSearch");
+const { ValueFilter } = require("../pages/valuefilter");
 
 const fs = require('fs');
 
 
 test.skip("Login with valid credentials", async ({ page }) => {
-    
-    
-    await page.goto ("https://www.daraz.com.bd/#?")
-    const loginpage = new loginPage(page);
-    await loginpage.login("01856565345","Daraz2026@");
-    await page.waitForLoadState('networkidle');
-    const userProfile = page.locator("#myAccountTrigger");
-    await expect(userProfile).toBeVisible();
-    const accountName = await userProfile.textContent();
-    console.log("Logged in User Name:", accountName);
-    // Save the account name to a json file
-    const userData = {
-        username: accountName?.trim(),
-        loginTime: new Date().toISOString()
-    };  
-    fs.writeFileSync('accountName.json', JSON.stringify(userData, null, 2));
 
 
-    });
+  await page.goto("https://www.daraz.com.bd/#?")
+  const loginpage = new loginPage(page);
+  await loginpage.login("01856565345", "Daraz2026@");
+  await page.waitForLoadState('networkidle');
+  const userProfile = page.locator("#myAccountTrigger");
+  await expect(userProfile).toBeVisible();
+  const accountName = await userProfile.textContent();
+  console.log("Logged in User Name:", accountName);
+  // Save the account name to a json file
+  const userData = {
+    username: accountName?.trim(),
+    loginTime: new Date().toISOString()
+  };
+  fs.writeFileSync('accountName.json', JSON.stringify(userData, null, 2));
+
+
+});
 
 
 test.skip('Login then search samsung s3', async ({ page }) => {
@@ -44,7 +45,7 @@ test.skip('Login then search samsung s3', async ({ page }) => {
 });
 
 test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }) => {
-    const addToCartPage = new AddToCart(page)
+  const addToCartPage = new AddToCart(page)
 
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
 
@@ -61,13 +62,20 @@ test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }
 });
 
 
-test.only('use multiple filter for search item ', async ({ page }) => {
-  const multiplefilter= new MultipleSearch(page);
+test.skip('use multiple filter for search item ', async ({ page }) => {
+  const multiplefilter = new MultipleSearch(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await multiplefilter.searchMultiple();
-  
-  
 
+
+
+});
+
+
+test.only('use value filter for search item ', async ({ page }) => {
+  const valuefilter = new ValueFilter(page);
+  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+  await valuefilter.filterByValue("1000", "2000"); 
 });
 
 
