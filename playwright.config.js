@@ -29,6 +29,10 @@ const config = ({
     browserName: 'chromium',
     headless: false,
     // browserName: 'webkit',
+    launchOptions: {
+    args: ['--start-maximized']
+  },
+  viewport: null
    
   },
   workers: 1,

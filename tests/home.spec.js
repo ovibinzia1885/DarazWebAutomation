@@ -4,6 +4,7 @@ const { SearchPage } = require("../pages/searchProduct");
 const { AddToCart } = require("../pages/addtocart");
 const { MultipleSearch } = require("../pages/multipleSearch");
 const { ValueFilter } = require("../pages/valuefilter");
+const { MultipleProductAddToCart } = require("../pages/multipleproductaddtocart");
 
 const fs = require('fs');
 
@@ -72,11 +73,23 @@ test.skip('use multiple filter for search item ', async ({ page }) => {
 });
 
 
-test.only('use value filter for search item ', async ({ page }) => {
+test.skip('use value filter for search item ', async ({ page }) => {
   const valuefilter = new ValueFilter(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
-  await valuefilter.filterByValue("1000", "2000"); 
+  await valuefilter.filterByValue("1000", "2000");
 });
 
+
+test.only('Multi Product Add to Cart', async ({ page }) => {
+  const ms = new MultipleProductAddToCart(page);
+  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+  await ms.loginPage.login("01856565345", "Daraz2026@");
+  await page.waitForLoadState('networkidle');
+  //await ms.addOneproduct(" T shirt ");
+  const products = ["T shirt", "Jeans", "Shoes"];
+  await ms.addManyProducts(products);
+
+
+});
 
 
