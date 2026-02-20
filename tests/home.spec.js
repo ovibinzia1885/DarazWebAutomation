@@ -5,6 +5,7 @@ const { AddToCart } = require("../pages/addtocart");
 const { MultipleSearch } = require("../pages/multipleSearch");
 const { ValueFilter } = require("../pages/valuefilter");
 const { MultipleProductAddToCart } = require("../pages/multipleproductaddtocart");
+const { itemCheckoutprocess } = require("../pages/Checkout");
 
 const fs = require('fs');
 
@@ -80,7 +81,7 @@ test.skip('use value filter for search item ', async ({ page }) => {
 });
 
 
-test.only('Multi Product Add to Cart', async ({ page }) => {
+test.skip('Multi Product Add to Cart', async ({ page }) => {
   const ms = new MultipleProductAddToCart(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await ms.loginPage.login("01856565345", "Daraz2026@");
@@ -88,6 +89,19 @@ test.only('Multi Product Add to Cart', async ({ page }) => {
   //await ms.addOneproduct(" T shirt ");
   const products = ["T shirt", "Jeans", "Shoes"];
   await ms.addManyProducts(products);
+
+
+});
+
+test.only('Checkout Process', async ({ page }) => {
+  const itemcheckout = new itemCheckoutprocess(page);
+  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+  await itemcheckout.login("01856565345", "Daraz2026@");
+  await page.waitForLoadState('networkidle');
+   await itemcheckout.sp.searchInput.fill("samsung s25 ultra");
+  await itemcheckout.sp.searchInput.press('Enter');
+  await page.waitForLoadState('networkidle');
+  await itemcheckout.checkoutprocess();
 
 
 });
