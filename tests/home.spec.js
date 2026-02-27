@@ -93,17 +93,33 @@ test.skip('Multi Product Add to Cart', async ({ page }) => {
 
 });
 
-test.only('Checkout Process', async ({ page }) => {
-  const itemcheckout = new itemCheckoutprocess(page);
-  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
-  await itemcheckout.login("01856565345", "Daraz2026@");
-  await page.waitForLoadState('networkidle');
-   await itemcheckout.sp.searchInput.fill("samsung s25 ultra");
-  await itemcheckout.sp.searchInput.press('Enter');
-  await page.waitForLoadState('networkidle');
-  await itemcheckout.checkoutprocess();
+test.only('Checkout Process', async ({ page, context }) => {
+  // allow swapping the page if it gets closed during login
+  let currentPage = page;
 
+  const performFlow = async () => {
+    const itemcheckout = new itemCheckoutprocess(currentPage);
+    await currentPage.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+    await itemcheckout.login("01856565345", "Daraz2026@");
 
+    if (currentPage.isClosed()) {
+      // login opened/closed a new window; start over with fresh page
+      currentPage = await context.newPage();
+      return performFlow();
+    }
+
+    // confirm login by checking user profile
+    const userProfile = currentPage.locator("#myAccountTrigger");
+    await expect(userProfile).toBeVisible({ timeout: 15000 });
+
+    // search and proceed to checkout
+    await itemcheckout.sp.searchInput.fill("samsung s25 ultra");
+    await itemcheckout.sp.searchInput.press('Enter');
+    await currentPage.waitForLoadState('networkidle');
+    await itemcheckout.checkoutprocess();
+  };
+
+  await performFlow();
 });
 
 

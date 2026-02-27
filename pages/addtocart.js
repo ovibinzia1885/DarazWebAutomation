@@ -39,7 +39,11 @@ class AddToCart extends loginPage {
 
     await this.cartIcon.waitFor({ state: "attached", timeout: 15000 });
     await this.cartIcon.scrollIntoViewIfNeeded();
+    // click the icon to open overlay, then navigate directly to the cart page to avoid dealing
+    // with the floating mini‑cart which doesn't expose the usual checkout button.
     await this.cartIcon.click({ force: true });
+    // some flows open an overlay instead of navigating; ensure we end up on the real cart URL
+    await this.page.goto('https://cart.daraz.com.bd/cart', { waitUntil: 'networkidle' });
   }
 
   async verifyCartProduct(expectedText) {

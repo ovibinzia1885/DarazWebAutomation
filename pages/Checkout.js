@@ -9,8 +9,9 @@ class itemCheckoutprocess  extends loginPage{
         this.atc= new AddToCart(page);
         this.ln=new loginPage(page);
         this.sp=new SearchPage(page);
-        this .chcekbox= page.locator("//label[@class='next-checkbox cart-item-checkbox ']//span[@class='next-checkbox-inner']").nth(0);
-        this .checkoutbutton=page.getByRole('button', { name: 'PROCEED TO CHECKOUT' });
+        // there can be multiple cart items; pick the first checkbox to avoid strict mode violation
+        this.checkbox = page.locator(".cart-item-left").first();
+        this.checkoutbutton=page.getByRole('button', { name: 'PROCEED TO CHECKOUT' });
         this.edit=page.getByRole('button', { name: 'Edit' });
         this.newaddress=page.getByRole('link', { name: 'Add new address' });
         this.fullname= page.getByPlaceholder('Enter your first and last name Name');
@@ -35,8 +36,26 @@ async checkoutprocess(){
     await this.atc.addToCart();
     await this.atc.goToCart();
     await this.atc.verifyCartProduct("Galaxy S25 Ultra");
-    await this.chcekbox.click();
-    await this.checkoutbutton.click();
+    // click the first cart item checkbox and wait if the page updates
+    await Promise.all([
+      this.page.waitForLoadState('networkidle'),
+      this.checkbox.click()
+    ]);
+
+    // ensure checkout button is visible/updated after selecting item
+    const checkoutBtn = this.page.getByRole('button', { name: 'PROCEED TO CHECKOUT' });
+    await checkoutBtn.waitFor({ state: 'visible', timeout: 10000 });
+    try {
+      await Promise.all([
+        this.page.waitForNavigation({ waitUntil: 'networkidle', timeout: 20000 }),
+        checkoutBtn.click()
+      ]);
+    } catch (e) {
+      // capture screenshot for debugging and rethrow
+      await this.page.screenshot({ path: 'checkout-error.png', fullPage: true }).catch(() => {});
+      throw e;
+    }
+
     await this.edit.click();
     await this.newaddress.click();
     await this.fullname.fill("Ovy Sultana");    
