@@ -26,35 +26,36 @@ class AddToCart extends loginPage {
   }
 
   async addToCart() {
-    await this.AddToCartbutton.click();
+    await this.cartIcon.waitFor({ state: "attached", timeout: 15000 });
+    await this.cartIcon.scrollIntoViewIfNeeded();
 
-    await this.popupCloseButton.waitFor({ state: 'visible', timeout: 3000 }).catch(() => { });
+    // click the icon; some versions of the site open the cart in a new tab/page.
+    const [possibleNewPage] = await Promise.all([
+      // listen for any new page that might open as a result of the click
+      this.page.context().waitForEvent('page').catch(() => null),
+      this.cartIcon.click({ force: true })
+    ]);
 
-    if (await this.popupCloseButton.isVisible().catch(() => false))
-      await this.popupCloseButton.click();
+    if (possibleNewPage) {
+      // switch our working page to the newly opened one
+      this.page = possibleNewPage;
+      this._initLocators();
+    }
 
   }
 
   async goToCart() {
-
-    await this.cartIcon.waitFor({ state: "attached", timeout: 15000 });
-    await this.cartIcon.scrollIntoViewIfNeeded();
-    // click the icon to open overlay, then navigate directly to the cart page to avoid dealing
-    // with the floating mini‑cart which doesn't expose the usual checkout button.
-    await this.cartIcon.click({ force: true });
-    // some flows open an overlay instead of navigating; ensure we end up on the real cart URL
-    await this.page.goto('https://cart.daraz.com.bd/cart', { waitUntil: 'networkidle' });
+    
+    await this.cartIcon.click();
+    await this.page.waitForLoadState('networkidle');
+  
   }
 
   async verifyCartProduct(expectedText) {
-    await this.cartProductName.first(0).waitFor({ state: 'visible' });
-    await expect(this.cartProductName.first()).toContainText(expectedText);
+
+    await expect(this.cartProductName).toContainText(expectedText);
     console.log("Verified product in cart:", expectedText);
   }
-
-
-
-
 }
 
 module.exports = { AddToCart };

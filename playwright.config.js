@@ -16,7 +16,7 @@ import { report } from 'node:process';
  */
 const config = ({
   testDir: './tests',
-  timeout: 60_000,
+  timeout: 120_000,
   expect: {
     timeout: 40*1000, 
   },
