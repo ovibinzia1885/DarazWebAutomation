@@ -7,6 +7,7 @@ const { ValueFilter } = require("../pages/valuefilter");
 const { MultipleProductAddToCart } = require("../pages/multipleproductaddtocart");
 const { itemCheckoutprocess } = require("../pages/Checkout");
 const { Removeitem } = require("../pages/Removeitem");
+const { Logout } = require("../pages/logout");
 
 const fs = require('fs');
 
@@ -104,7 +105,7 @@ test.skip('Add to cart and checkout process', async ({ page }) => {
   await checkout.editAndAddNewAddress();
 });
 
-test.only('Remove item from cart', async ({ page }) => {
+test.skip('Remove item from cart', async ({ page }) => {
   const removeItem = new Removeitem(page);
 
   try {
@@ -123,6 +124,17 @@ test.only('Remove item from cart', async ({ page }) => {
     console.error('Test failed:', error.message);
     throw error;
   }
+});
+
+
+test.only('Logout after login', async ({ page }) => {
+  const logout = new Logout(page);
+  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' }); 
+  await logout.login("01856565345", "Daraz2026@");
+  await page.waitForLoadState('networkidle');
+  await logout.verifyLogin();
+  await logout.logout();
+  await logout.verifyLogout(); 
 });
 
 
