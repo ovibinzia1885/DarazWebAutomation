@@ -6,6 +6,7 @@ const { MultipleSearch } = require("../pages/multipleSearch");
 const { ValueFilter } = require("../pages/valuefilter");
 const { MultipleProductAddToCart } = require("../pages/multipleproductaddtocart");
 const { itemCheckoutprocess } = require("../pages/Checkout");
+const { Removeitem } = require("../pages/Removeitem");
 
 const fs = require('fs');
 
@@ -57,7 +58,6 @@ test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }
   await addToCartPage.searchInput.press('Enter');
   await addToCartPage.openFirstMatchedProduct();
   await addToCartPage.addToCart();
-  // await page.waitForLoadState('networkidle');
   await addToCartPage.goToCart();
   await addToCartPage.verifyCartProduct('Galaxy S25 Ultra');
   await page.waitForTimeout(5000);
@@ -86,37 +86,45 @@ test.skip('Multi Product Add to Cart', async ({ page }) => {
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await ms.loginPage.login("01856565345", "Daraz2026@");
   await page.waitForLoadState('networkidle');
-  //await ms.addOneproduct(" T shirt ");
   const products = ["T shirt", "Jeans", "Shoes"];
   await ms.addManyProducts(products);
 
 
 });
 
-test.only('Add to cart and checkout process', async ({ page }) => {
+test.skip('Add to cart and checkout process', async ({ page }) => {
   const checkout = new itemCheckoutprocess(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await checkout.login("01856565345", "Daraz2026@");
   await page.waitForLoadState('networkidle');
-
-  // search for a product and add to cart
   await checkout.searchAndAdd('samsung s25 ultra');
-
-  // select checkbox from left product (first product)
   await checkout.selectLeftProductCheckbox();
-
-  // proceed into checkout page and verify
   await checkout.proceedToCheckout();
-
-  // Verify we are on checkout page by URL
   await expect(page).toHaveURL(/checkout/);
-  console.log('On checkout page');
-
-  // Edit address and add new dummy address
   await checkout.editAndAddNewAddress();
-
-  console.log(' Test completed successfully!');
 });
+
+test.only('Remove item from cart', async ({ page }) => {
+  const removeItem = new Removeitem(page);
+
+  try {
+    await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(2000);
+    console.log('Logging in...');
+    await removeItem.login("01856565345", "Daraz2026@");
+    await page.waitForTimeout(3000);
+    await removeItem.openCart();
+    await removeItem.page.waitForTimeout(2000);
+    await removeItem.selectProductCheckbox('Galaxy S25 Ultra');
+    await removeItem.page.waitForTimeout(2000);
+    await removeItem.removeProduct('Galaxy S25 Ultra');
+    await removeItem.verifyRemoved('Galaxy S25 Ultra');
+  } catch (error) {
+    console.error('Test failed:', error.message);
+    throw error;
+  }
+});
+
 
 
 
