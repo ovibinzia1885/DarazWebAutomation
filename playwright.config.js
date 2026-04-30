@@ -20,14 +20,19 @@ const config = ({
   expect: {
     timeout: 40*1000, 
   },
-  // reporter: [
-  //   ['html', { outputFolder: 'playwright-report' }],
-  //   ['allure-playwright', { outputFolder: 'allure-results' }],
-  // ],
+  reporter: [
+    ['html', { outputFolder: 'playwright-report' }],
+    ['allure-playwright', { outputFolder: 'allure-results' }],
+  ],
+
+
+ 
   
   use: {
     browserName: 'chromium',
     headless: false,
+    screenshot: 'only-on-failure',
+    
     // browserName: 'webkit',
     launchOptions: {
     args: ['--start-maximized']

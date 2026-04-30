@@ -82,7 +82,7 @@ test.skip('use value filter for search item ', async ({ page }) => {
 });
 
 
-test.skip('Multi Product Add to Cart', async ({ page }) => {
+test.only('Multi Product Add to Cart', async ({ page }) => {
   const ms = new MultipleProductAddToCart(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await ms.loginPage.login("01856565345", "Daraz2026@");
