@@ -45,9 +45,10 @@ class AddToCart extends loginPage {
   }
 
   async goToCart() {
-    
+
+    await this.cartIcon.waitFor({ state: 'visible' });
     await this.cartIcon.click();
-    await this.page.waitForLoadState('networkidle');
+    // await this.page.waitForLoadState('networkidle');
   
   }
 

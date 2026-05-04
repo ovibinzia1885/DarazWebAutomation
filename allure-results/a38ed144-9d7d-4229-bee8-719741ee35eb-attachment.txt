@@ -1,0 +1,2 @@
+Login successful, account name visible.
+Logout successful, login link visible.

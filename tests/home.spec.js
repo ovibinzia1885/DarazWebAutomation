@@ -12,7 +12,7 @@ const { Logout } = require("../pages/logout");
 const fs = require('fs');
 
 
-test.skip("Login with valid credentials", async ({ page }) => {
+test("Login with valid credentials", async ({ page }) => {
 
 
   await page.goto("https://www.daraz.com.bd/#?")
@@ -34,7 +34,7 @@ test.skip("Login with valid credentials", async ({ page }) => {
 });
 
 
-test.skip('Login then search samsung s3', async ({ page }) => {
+test('Login then search samsung s3', async ({ page }) => {
 
   const searchPage = new SearchPage(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
@@ -48,7 +48,7 @@ test.skip('Login then search samsung s3', async ({ page }) => {
 
 });
 
-test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }) => {
+test.only('Login then search samsung s25 ultra and add to cart', async ({ page }) => {
   const addToCartPage = new AddToCart(page)
 
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
@@ -65,7 +65,7 @@ test.skip('Login then search samsung s25 ultra and add to cart', async ({ page }
 });
 
 
-test.skip('use multiple filter for search item ', async ({ page }) => {
+test('use multiple filter for search item ', async ({ page }) => {
   const multiplefilter = new MultipleSearch(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await multiplefilter.searchMultiple();
@@ -75,14 +75,14 @@ test.skip('use multiple filter for search item ', async ({ page }) => {
 });
 
 
-test.skip('use value filter for search item ', async ({ page }) => {
+test('use value filter for search item ', async ({ page }) => {
   const valuefilter = new ValueFilter(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await valuefilter.filterByValue("1000", "2000");
 });
 
 
-test.only('Multi Product Add to Cart', async ({ page }) => {
+test('Multi Product Add to Cart', async ({ page }) => {
   const ms = new MultipleProductAddToCart(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await ms.loginPage.login("01856565345", "Daraz2026@");
@@ -93,7 +93,7 @@ test.only('Multi Product Add to Cart', async ({ page }) => {
 
 });
 
-test.skip('Add to cart and checkout process', async ({ page }) => {
+test('Add to cart and checkout process', async ({ page }) => {
   const checkout = new itemCheckoutprocess(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await checkout.login("01856565345", "Daraz2026@");
@@ -105,7 +105,7 @@ test.skip('Add to cart and checkout process', async ({ page }) => {
   await checkout.editAndAddNewAddress();
 });
 
-test.skip('Remove item from cart', async ({ page }) => {
+test('Remove item from cart', async ({ page }) => {
   const removeItem = new Removeitem(page);
 
   try {
@@ -127,7 +127,7 @@ test.skip('Remove item from cart', async ({ page }) => {
 });
 
 
-test.only('Logout after login', async ({ page }) => {
+test('Logout after login', async ({ page }) => {
   const logout = new Logout(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' }); 
   await logout.login("01856565345", "Daraz2026@");
