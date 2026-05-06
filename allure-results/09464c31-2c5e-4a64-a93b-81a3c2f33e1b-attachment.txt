@@ -1,0 +1,14 @@
+Error in openCart: locator.click: Error: strict mode violation: locator('a[href*=\'cart\']') resolved to 2 elements:
+    1) <a data-spm="dcart" href="https://cart.daraz.com.bd/cart">…</a> aka getByRole('link', { name: '5', exact: true })
+    2) <a venture="BD" id="337213053" data-spm-protocol="i" data-before-current-y="3357.60009765625" class="pc-custom-link jfy-item hp-mod-card-hover" name="1 PC Length = 2'.5" Feet / Width = 2'.3" 3D Stickers White Self Adhesive Foam Wall Sticker, For Ideal To Decorate Bedrooms by Doob Cart" href="//www.daraz.com.bd/products/1-pc-length-25-feet-width-23-3d-stickers-white-self-adhesive-foam-wall-sticker-for-ideal-to-decorate-bedrooms-by-doob-cart-i337213053-s1644531704.html?pvid=25efddd0-5e64-4628-85b4-…>…</a> aka getByRole('link', { name: '1 PC Length = 2\'.5" Feet /' })
+
+Call log:
+  - waiting for locator('a[href*=\'cart\']')
+
+Test failed: locator.click: Error: strict mode violation: locator('a[href*=\'cart\']') resolved to 2 elements:
+    1) <a data-spm="dcart" href="https://cart.daraz.com.bd/cart">…</a> aka getByRole('link', { name: '5', exact: true })
+    2) <a venture="BD" id="337213053" data-spm-protocol="i" data-before-current-y="3357.60009765625" class="pc-custom-link jfy-item hp-mod-card-hover" name="1 PC Length = 2'.5" Feet / Width = 2'.3" 3D Stickers White Self Adhesive Foam Wall Sticker, For Ideal To Decorate Bedrooms by Doob Cart" href="//www.daraz.com.bd/products/1-pc-length-25-feet-width-23-3d-stickers-white-self-adhesive-foam-wall-sticker-for-ideal-to-decorate-bedrooms-by-doob-cart-i337213053-s1644531704.html?pvid=25efddd0-5e64-4628-85b4-…>…</a> aka getByRole('link', { name: '1 PC Length = 2\'.5" Feet /' })
+
+Call log:
+  - waiting for locator('a[href*=\'cart\']')
+

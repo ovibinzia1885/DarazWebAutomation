@@ -1,0 +1,250 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e8]:
+        - generic [ref=e9] [cursor=pointer]: Save More on App
+        - link "Become a Seller" [ref=e11] [cursor=pointer]:
+          - /url: https://sellercenter.daraz.com.bd/v2/seller/login
+        - generic [ref=e12] [cursor=pointer]: Help & Support
+        - generic [ref=e14] [cursor=pointer]: ovy's account
+        - generic [ref=e15] [cursor=pointer]: ভাষা
+      - generic [ref=e17]:
+        - link "Online Shopping Daraz Logo" [ref=e19] [cursor=pointer]:
+          - /url: https://www.daraz.com.bd/
+          - img "Online Shopping Daraz Logo" [ref=e20]
+        - generic [ref=e24]:
+          - searchbox "Search in Daraz" [ref=e26]
+          - link "SEARCH" [ref=e28] [cursor=pointer]:
+            - /url: //www.daraz.com.bd/catalog/?q=
+        - generic [ref=e29]:
+          - link "2":
+            - /url: https://cart.daraz.com.bd/cart
+            - img [ref=e31] [cursor=pointer]
+            - generic [ref=e35] [cursor=pointer]: "2"
+    - generic [ref=e38]:
+      - generic [ref=e40] [cursor=pointer]: Categories
+      - navigation [ref=e41]
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - generic: 
+            - checkbox "" [ref=e55]
+          - text: Select All (2 item(s))
+        - generic [ref=e57] [cursor=pointer]:
+          - generic [ref=e58]: 
+          - generic [ref=e59]: Delete
+      - generic [ref=e60]:
+        - generic [ref=e63]:
+          - generic [ref=e64] [cursor=pointer]:
+            - generic [ref=e65]:
+              - generic: 
+            - checkbox "" [ref=e66]
+          - generic [ref=e67]:
+            - img [ref=e68]
+            - text: SUMASH TECH LIMITED
+            - generic [ref=e69]: 
+        - generic [ref=e72]:
+          - generic [ref=e73]:
+            - generic [ref=e74]:
+              - generic [ref=e75]:
+                - generic: 
+              - checkbox "" [ref=e76]
+            - link "item" [ref=e78] [cursor=pointer]:
+              - /url: http://www.daraz.com.bd//products/i523240947-s2523476056.html?urlFlag=true
+              - img "item" [ref=e79]
+            - generic [ref=e80]:
+              - link "Galaxy S25 Ultra" [ref=e81] [cursor=pointer]:
+                - /url: http://www.daraz.com.bd//products/i523240947-s2523476056.html?urlFlag=true
+                - text: Galaxy S25 Ultra
+              - link "SAMSUNG, Color Family:Titanium Silverblue, Storage Capacity:256GB" [ref=e83] [cursor=pointer]:
+                - /url: http://www.daraz.com.bd//products/i523240947-s2523476056.html?urlFlag=true
+              - paragraph [ref=e85]: Only 2 item(s) in stock
+          - generic [ref=e86]:
+            - generic [ref=e87]:
+              - paragraph [ref=e88]: ৳ 118,599
+              - paragraph [ref=e89]: ৳ 155,000
+            - generic [ref=e90]:
+              - generic [ref=e92] [cursor=pointer]: 
+              - generic [ref=e94] [cursor=pointer]: 
+          - generic [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e101] [cursor=pointer]: 
+              - generic [ref=e104] [cursor=pointer]: 
+            - textbox [ref=e107]: "2"
+    - generic [ref=e109]:
+      - generic [ref=e110]: Order Summary
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: Subtotal (0 items)
+            - generic [ref=e117]: ৳ 0
+          - generic [ref=e119]:
+            - generic [ref=e120]: Shipping Fee
+            - generic [ref=e121]: ৳ 0
+        - generic [ref=e122]:
+          - paragraph
+          - generic [ref=e123]:
+            - textbox "Enter Voucher Code" [ref=e126]
+            - button "APPLY" [ref=e128] [cursor=pointer]
+        - generic [ref=e129]:
+          - generic [ref=e130]:
+            - generic [ref=e131]: Total
+            - generic [ref=e132]: ৳ 0
+          - button "PROCEED TO CHECKOUT (0)" [ref=e133] [cursor=pointer]
+  - generic:
+    - generic [ref=e136]:
+      - generic [ref=e138]:
+        - generic [ref=e139]:
+          - heading "Customer Care" [level=3] [ref=e140]
+          - list [ref=e141]:
+            - listitem [ref=e142]:
+              - link "Help Center" [ref=e143] [cursor=pointer]:
+                - /url: //buyer-helpcenter.daraz.com.bd/s/page
+            - listitem [ref=e144]:
+              - link "How to Buy" [ref=e145] [cursor=pointer]:
+                - /url: //helpcenter.daraz.com.bd/page/knowledge?language=en&pageId=11&category=1000001032&scm=1003.4.icms-zebra-100022982-6850452.OTHER_6502233775_7696023&knowledge=1000005321
+            - listitem [ref=e146]:
+              - link "Returns & Refunds" [ref=e147] [cursor=pointer]:
+                - /url: https://pages.daraz.com.bd/wow/gcp/route/daraz/bd/upr/router?spm=a2a0e.tm80426660.5819486610.1.110f3edbgBqiU9&hybrid=1&data_prefetch=true&prefetch_replace=1&at_iframe=1&wh_pid=/lazada/channel/bd/fmcg-offers/HowtoReturnaProduct
+            - listitem [ref=e148]:
+              - link "Contact Us" [ref=e149] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/contact-us/?scm=1003.4.icms-zebra-100022982-6850452.OTHER_6502233777_7696023
+            - listitem [ref=e150]:
+              - link "Terms & Conditions" [ref=e151] [cursor=pointer]:
+                - /url: //pages.daraz.com.bd/wow/gcp/route/daraz/bd/upr/router?hybrid=1&data_prefetch=true&prefetch_replace=1&at_iframe=1&wh_pid=/lazada/channel/bd/weekly-campaigns/customer-tc
+            - listitem [ref=e152]:
+              - link "CCMS - Central Complain Management System" [ref=e153] [cursor=pointer]:
+                - /url: //ccms.gov.bd/ticket-apply?scm=1003.4.icms-zebra-100022982-6850452.OTHER_6502233779_7696023&token=DAR-3011-iIMd2
+        - generic [ref=e154]:
+          - heading "Daraz" [level=3] [ref=e155]
+          - list [ref=e156]:
+            - listitem [ref=e157]:
+              - link "About Daraz" [ref=e158] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/about-us/?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348799_2538033
+            - listitem [ref=e159]:
+              - link "Digital Payments" [ref=e160] [cursor=pointer]:
+                - /url: //pages.daraz.com.bd/wow/gcp/daraz/channel/bd/pay/daraz-pay?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348800_2538033
+            - listitem [ref=e161]:
+              - link "Daraz Card" [ref=e162] [cursor=pointer]:
+                - /url: //pages.daraz.com.bd/wow/gcp/daraz/channel/bd/help-page/daraz-co-brand-card?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6502124219_2538033
+            - listitem [ref=e163]:
+              - link "Daraz Blog" [ref=e164] [cursor=pointer]:
+                - /url: //blog.daraz.com.bd/?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348802_2538033
+            - listitem [ref=e165]:
+              - link "Daraz Cares" [ref=e166] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/daraz-cares/?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348803_2538033
+            - listitem [ref=e167]:
+              - link "Privacy Policy" [ref=e168] [cursor=pointer]:
+                - /url: https://pages.daraz.com.bd/wow/gcp/route/daraz/bd/upr/router?hybrid=1&data_prefetch=true&prefetch_replace=1&at_iframe=1&wh_pid=/lazada/channel/bd/weekly-campaigns/privacy-policy
+            - listitem [ref=e169]:
+              - link "Daraz Mart" [ref=e170] [cursor=pointer]:
+                - /url: //pages.daraz.com.bd/wow/gcp/daraz/channel/bd/dmart/dmart-home?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348804_2538033
+            - listitem [ref=e171]:
+              - link "Daraz App" [ref=e172] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/mobile-apps/?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348806_2538033
+            - listitem [ref=e173]:
+              - link "Daraz Exclusives" [ref=e174] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/daraz-exclusive-products/?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6051348807_2538033
+            - listitem [ref=e175]:
+              - link "Daraz Donates" [ref=e176] [cursor=pointer]:
+                - /url: //pages.daraz.com.bd/wow/gcp/daraz/channel/bd/help-page/daraz-donation-to-make-difference?scm=1003.4.icms-zebra-100022982-2888463.OTHER_6502117438_2538033
+            - listitem [ref=e177]:
+              - link "Daraz University" [ref=e178] [cursor=pointer]:
+                - /url: //university.daraz.com.bd?scm=1003.4.icms-zebra-100022982-2888459.OTHER_5476361449_2538025
+            - listitem [ref=e179]:
+              - link "Sell on Daraz" [ref=e180] [cursor=pointer]:
+                - /url: //sellercenter.daraz.com.bd/apps/seller/login?scm=1003.4.icms-zebra-100022982-2888459.OTHER_5476361450_2538025&regist=true
+            - listitem [ref=e181]:
+              - link "Code of Conduct" [ref=e182] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/wow/i/bd/help-pages/code-of-conduct?hybrid=1&scm=1003.4.icms-zebra-100022982-2888459.OTHER_5476361451_2538025
+            - listitem [ref=e183]:
+              - link "Join the Daraz Affiliate Program" [ref=e184] [cursor=pointer]:
+                - /url: //www.daraz.com.bd/daraz-affiliate-program/?scm=1003.4.icms-zebra-100022982-2888459.OTHER_6035955355_2538025
+        - generic [ref=e185]:
+          - generic:
+            - img "Download App" [ref=e187]
+            - generic [ref=e188]:
+              - generic [ref=e189]: Happy Shopping
+              - generic [ref=e190]: Download App
+            - generic [ref=e191]:
+              - link "Apple App Download" [ref=e192] [cursor=pointer]:
+                - /url: //itunes.apple.com/app/id978058048?mt=8&scm=1003.4.icms-zebra-100022982-2874591.OTHER_5436817469_2538051
+                - img "Apple App Download" [ref=e193]
+              - link "Android App Download" [ref=e194] [cursor=pointer]:
+                - /url: //play.google.com/store/apps/details?id=com.daraz.android&scm=1003.4.icms-zebra-100022982-2874591.OTHER_5436817469_2538051
+                - img "Android App Download" [ref=e195]
+              - link "Huawei App Download" [ref=e196] [cursor=pointer]:
+                - /url: //appgallery.huawei.com/?scm=1003.4.icms-zebra-100022982-2874591.OTHER_5436817469_2538051#/app/C100948133
+                - img "Huawei App Download" [ref=e197]
+      - generic [ref=e199]:
+        - generic [ref=e200]:
+          - heading "Payment Methods" [level=3] [ref=e201]
+          - generic [ref=e202]:
+            - img "cod" [ref=e204]
+            - img "visa" [ref=e206]
+            - img "master-card" [ref=e208]
+            - img "american-express" [ref=e210]
+            - img "easy-monthly-installments" [ref=e212]
+            - img "bKash" [ref=e214]
+            - img "nagad" [ref=e216]
+            - img "rainbow" [ref=e218]
+            - img "rocket" [ref=e220]
+        - generic [ref=e221]:
+          - heading "Verified by" [level=3] [ref=e222]
+          - img "Daraz" [ref=e226]
+        - generic [ref=e227]:
+          - heading "DBID" [level=3] [ref=e228]
+          - generic [ref=e229]:
+            - paragraph [ref=e230]: "Registration ID :"
+            - paragraph [ref=e231]: "304903094"
+      - generic [ref=e233]:
+        - generic [ref=e234]:
+          - heading "Daraz International" [level=3] [ref=e235]
+          - generic [ref=e236]:
+            - link "pk Pakistan" [ref=e237] [cursor=pointer]:
+              - /url: //www.daraz.pk/?scm=1003.4.icms-zebra-5029545-2834483.OTHER_5372735181_2485585
+              - img "pk" [ref=e238]
+              - generic [ref=e239]: Pakistan
+            - link "bd Bangladesh" [ref=e240] [cursor=pointer]:
+              - /url: //www.daraz.com.bd/?scm=1003.4.icms-zebra-5029545-2834483.OTHER_5372735171_2485585
+              - img "bd" [ref=e241]
+              - generic [ref=e242]: Bangladesh
+            - link "lk Sri Lanka" [ref=e243] [cursor=pointer]:
+              - /url: //www.daraz.lk/?scm=1003.4.icms-zebra-5029545-2834483.OTHER_5372735173_2485585
+              - img "lk" [ref=e244]
+              - generic [ref=e245]: Sri Lanka
+            - link "mm Myanmar" [ref=e246] [cursor=pointer]:
+              - /url: //www.shop.com.mm/?scm=1003.4.icms-zebra-5029545-2834483.OTHER_5372735176_2485585
+              - img "mm" [ref=e247]
+              - generic [ref=e248]: Myanmar
+            - link "np Nepal" [ref=e249] [cursor=pointer]:
+              - /url: //www.daraz.com.np/?scm=1003.4.icms-zebra-5029545-2834483.OTHER_5372735178_2485585
+              - img "np" [ref=e250]
+              - generic [ref=e251]: Nepal
+        - generic [ref=e252]:
+          - heading "Follow Us" [level=3] [ref=e253]
+          - generic [ref=e254]:
+            - link "facebook" [ref=e255] [cursor=pointer]:
+              - /url: https://www.facebook.com/DarazBangladesh
+              - img "facebook" [ref=e256]
+            - link "youtube" [ref=e257] [cursor=pointer]:
+              - /url: https://www.youtube.com/@DarazBangladeshOfficial
+              - img "youtube" [ref=e258]
+            - link "twitter" [ref=e259] [cursor=pointer]:
+              - /url: //twitter.com/DarazBangladesh/?scm=1003.4.icms-zebra-100022982-2933596.OTHER_5476239795_2580063
+              - img "twitter" [ref=e260]
+            - link "instagram" [ref=e261] [cursor=pointer]:
+              - /url: https://www.instagram.com/darazbangladesh/
+              - img "instagram" [ref=e262]
+        - generic [ref=e264]: © Daraz 2026
+    - button "Messages" [ref=e266] [cursor=pointer]:
+      - generic [ref=e267]:
+        - img [ref=e268]
+        - generic [ref=e273]: Messages
+```

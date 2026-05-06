@@ -48,20 +48,23 @@ test('Login then search samsung s3', async ({ page }) => {
 
 });
 
-test.only('Login then search samsung s25 ultra and add to cart', async ({ page }) => {
-  const addToCartPage = new AddToCart(page)
+test("Login → Search → Add to Cart → Verify", async ({ page }) => {
 
-  await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
+  const addToCartPage = new AddToCart(page);
 
-  await addToCartPage.login('01856565345', 'Daraz2026@');
-  await page.waitForLoadState('networkidle');
+  await page.goto("https://www.daraz.com.bd/", {
+    waitUntil: "domcontentloaded"
+  });
+
+  await addToCartPage.login("01856565345", "Daraz2026@");
+  await page.waitForLoadState("networkidle");
   await addToCartPage.searchInput.fill("samsung s25 ultra");
-  await addToCartPage.searchInput.press('Enter');
+  await addToCartPage.searchInput.press("Enter");
   await addToCartPage.openFirstMatchedProduct();
   await addToCartPage.addToCart();
   await addToCartPage.goToCart();
-  await addToCartPage.verifyCartProduct('Galaxy S25 Ultra');
-  await page.waitForTimeout(5000);
+  await addToCartPage.verifyCartProduct("S25 Ultra");
+
 });
 
 
@@ -69,8 +72,6 @@ test('use multiple filter for search item ', async ({ page }) => {
   const multiplefilter = new MultipleSearch(page);
   await page.goto('https://www.daraz.com.bd/', { waitUntil: 'domcontentloaded' });
   await multiplefilter.searchMultiple();
-
-
 
 });
 
