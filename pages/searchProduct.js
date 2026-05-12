@@ -13,17 +13,14 @@ class SearchPage extends loginPage {
     
 }
 
-    async  loginAndSearch(phone, password, productName) {
-
-    const ip = new loginPage(this.page);
-    await ip.login(phone, password);
-    await this.searchInput.fill(productName);
-    await this.searchInput.press('Enter');
-    await this.page.waitForLoadState("domcontentloaded");
-  }
+    async search(productName) {
+        await this.searchInput.fill(productName);
+        await this.searchInput.press('Enter');
+        await this.page.waitForLoadState("domcontentloaded");
+    }
 
 
-  async verifyProduct(expectedText) {
+    async verifyProduct(expectedText) {
     await this.page.waitForSelector('.xYcXp h1');
     const firstProduct = this.productTitle.first();
     await expect(firstProduct).toContainText(expectedText);

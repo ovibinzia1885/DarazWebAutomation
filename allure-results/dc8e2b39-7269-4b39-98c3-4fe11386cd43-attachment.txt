@@ -1,0 +1,11 @@
+
+--- Selecting Checkbox for: Galaxy S25 Ultra ---
+✓ Found product: Galaxy S25 Ultra
+
+--- Removing Product: Galaxy S25 Ultra ---
+Located product: Galaxy S25 Ultra
+Remove confirmation clicked
+
+--- Verifying Removal of: Galaxy S25 Ultra ---
+ Verified: Galaxy S25 Ultra has been removed from cart
+Logout Started...

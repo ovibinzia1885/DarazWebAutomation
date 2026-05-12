@@ -14,9 +14,22 @@ class Removeitem extends loginPage {
 
     }
 
+    async ensurePage() {
+        if (!this.page || this.page.isClosed()) {
+            const pages = this.page ? this.page.context().pages().filter(p => !p.isClosed()) : [];
+            if (pages.length) {
+                this.page = pages[0];
+                console.log('Recovered active page from context');
+            } else {
+                throw new Error('No active page available to continue');
+            }
+        }
+    }
+
     async openCart() {
         try {
-            await this.cartIcon.click({ force: true, timeout: 5000 });
+            await this.ensurePage();
+            await this.page.goto('https://cart.daraz.com.bd/cart', { waitUntil: 'domcontentloaded' });
             await this.page.waitForLoadState('networkidle');
         } catch (error) {
             console.error(`Error in openCart: ${error.message}`);
@@ -28,12 +41,7 @@ class Removeitem extends loginPage {
     async selectProductCheckbox(productName) {
         try {
             console.log(`\n--- Selecting Checkbox for: ${productName} ---`);
-            if (this.page.isClosed && this.page.isClosed()) {
-                const pages = this.page.context().pages().filter(p => !p.isClosed());
-                if (pages.length) this.page = pages[pages.length - 1];
-                console.log('Recovered closed page reference');
-            }
-
+            await this.ensurePage();
             await this.page.waitForTimeout(1000);
             const productLocator = this.page.locator(this.productTextSelector.replace('{name}', productName)).first();
             try {
@@ -76,13 +84,7 @@ class Removeitem extends loginPage {
     async removeProduct(productName) {
         try {
             console.log(`\n--- Removing Product: ${productName} ---`);
-
-            if (this.page.isClosed && this.page.isClosed()) {
-                const pages = this.page.context().pages().filter(p => !p.isClosed());
-                if (pages.length) this.page = pages[pages.length - 1];
-                console.log('Recovered closed page reference');
-            }
-
+            await this.ensurePage();
             await this.page.waitForTimeout(1000);
 
             const productLocator = this.page.locator(this.productTextSelector.replace('{name}', productName)).first();
@@ -136,7 +138,8 @@ class Removeitem extends loginPage {
     async verifyRemoved(productName) {
         try {
             console.log(`\n--- Verifying Removal of: ${productName} ---`);
-            await this.page.reload({ waitUntil: 'domcontentloaded' });
+            await this.ensurePage();
+            await this.page.goto('https://cart.daraz.com.bd/cart', { waitUntil: 'domcontentloaded' });
             await this.page.waitForTimeout(2000);
             const productLocator = this.page.locator(this.productTextSelector.replace('{name}', productName)).first();
             await expect(productLocator).toHaveCount(0, { timeout: 10000 });

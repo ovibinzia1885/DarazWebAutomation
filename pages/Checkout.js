@@ -67,23 +67,7 @@ class itemCheckoutprocess extends loginPage {
 
             const currentUrl = this.page.url();
             if (/user\/login/.test(currentUrl)) {
-                console.log('Redirected to login, re-authenticating...');
-                if (this.page.isClosed()) {
-                    const ctx = this.atc.page.context();
-                    const pages = ctx.pages().filter(p => !p.isClosed());
-                    if (pages.length) {
-                        this.page = pages[pages.length - 1];
-                    }
-                }
-                await this.login('01856565345', 'Daraz2026@');
-                await this.page.waitForTimeout(3000);
-                try {
-                    await this.page.goto('https://cart.daraz.com.bd/cart', { waitUntil: 'domcontentloaded', timeout: 30000 });
-                    await this.page.waitForTimeout(5000);
-                    console.log('✓ Returned to cart after login');
-                } catch (err2) {
-                    console.warn('Failed to re-navigate to cart:', err2.message);
-                }
+                throw new Error('Unexpected redirect to login during checkout. Session may have expired.');
             }
 
             if (this.page.isClosed()) {
@@ -189,15 +173,8 @@ class itemCheckoutprocess extends loginPage {
 
             const cur = this.page.url();
             if (/\/user\/login/.test(cur)) {
-                console.log('On login page before checkout, re-login');
-                await this.login('01856565345', 'Daraz2026@');
-                await this.page.waitForTimeout(2000);
-
-                try {
-                    btn = this.page.getByRole('button', { name: /PROCEED TO CHECKOUT/i });
-                } catch { }
+                throw new Error('Unexpected redirect to login during checkout. Session may have expired.');
             }
-
 
             if (!btn) {
                 try {

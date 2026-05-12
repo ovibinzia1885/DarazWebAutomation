@@ -17,7 +17,7 @@ class ValueFilter extends loginPage {
     }
 
     async filterByValue(min, max) {
-        await this.sp.loginAndSearch("01856565345", "Daraz2026@", "mobile cover");
+        await this.sp.search("mobile cover");
         await this.minvalue.scrollIntoViewIfNeeded();
         await this.minvalue.fill(min);
         await this.maxvlaue.fill(max);

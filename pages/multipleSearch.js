@@ -15,7 +15,7 @@ class MultipleSearch extends loginPage {
     }
 
     async searchMultiple() {
-        await this.SearchPage.loginAndSearch("01856565345", "Daraz2026@", "mobile cover");
+        await this.SearchPage.search("mobile cover");
         await expect(this.checkSearchResult).toBeVisible();
         await this.checkSearchResult.click();
         await this.serivedBy.click();
