@@ -30,7 +30,7 @@ DarazWebAutomation
 │ ├── multipleSearch.js
 │
 ├── tests/
-│ └── home.spec.js
+│ └── admin.spec.js
 │
 ├── playwright.config.js
 ├── accountName.json
