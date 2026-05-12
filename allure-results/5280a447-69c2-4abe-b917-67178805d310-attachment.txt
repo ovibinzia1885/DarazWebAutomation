@@ -1,3 +1,0 @@
-Login Started...
-Login Successful
-Logged in User Name: ovy's account
